@@ -1,0 +1,50 @@
+﻿@model BookShop.ViewModels.IndexPageVM
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<br />
+<div class="container">
+
+    <ul id="menu-categories" class="menu-list list-inline text-center">
+        <li class="active btn btn-info mr-1 ml-1" data-filter=".menu-shop">Show all</li>
+        @foreach (var item in Model.Categories)
+        {
+            <li class="btn btn-info mr-1 ml-1" data-filter=".@item.Name.Replace(" ",string.Empty).Replace(".",string.Empty)">@item.Name</li>
+        }
+    </ul>
+
+    @foreach (var item in Model.Categories)
+    {
+        <div class="row">
+            <partial name="_MenuItemsPartial" model="@Model.MenuItems.Where(m=>m.CategoryId==item.Id)" />
+        </div>
+    }
+</div>
+
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+
+    <script>
+
+    (function ($) {
+
+        $("#menu-categories li").click(function () {
+            $("#menu-categories li").removeClass('active');
+            $(this).addClass('active');
+
+            var selected = $(this).data('filter');
+
+            $('.menu-shop').fadeOut();
+
+            setTimeout(function () {
+                $(selected).slideDown();
+            },300);
+        });
+    })(jQuery);
+
+    </script>
+}

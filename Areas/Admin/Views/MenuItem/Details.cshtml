@@ -1,0 +1,45 @@
+﻿@model BookShop.ViewModels.MenuItemVM
+@using BookShop.Extensions
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3>Details MenuItem</h3>
+<hr />
+<div class="container border p-3">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="mb-2">
+                <label class="text-info control-label" asp-for="MenuItem.Name"></label>:<br />
+                @Html.DisplayFor(model => model.MenuItem.Name)
+            </div>
+            <div class="mb-2">
+                <label class="text-info control-label" asp-for="MenuItem.Description" ></label>:<br />
+                @Html.DisplayFor(model => model.MenuItem.Description)
+            </div>
+            <div class="mb-2">
+                <label class="text-info control-label" asp-for="MenuItem.Price" ></label>:<br />
+                @Html.DisplayFor(model => model.MenuItem.Price)
+            </div>
+            <div class="mb-2">
+                <label class="text-info control-label" asp-for="MenuItem.CategoryId" ></label>:<br />
+                @Html.DisplayFor(model => model.MenuItem.Category.Name)
+            </div>
+            <div class="mb-2">
+                <img src="@Model.MenuItem.Image" width="100%" style="border-radius:5px; border: 1px solid black;" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mb-1">
+        <a class="btn btn-success" asp-route-id="@Model.MenuItem.Id" asp-action="Edit">Edit</a>
+    </div>
+
+    <div class="mb-1">
+        <a class="btn btn-info" asp-action="Index">Back to list</a>
+    </div>
+</div>
+

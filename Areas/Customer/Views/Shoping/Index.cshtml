@@ -1,0 +1,22 @@
+﻿@model BookShop.ViewModels.ShopCardVM
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    @if(Model.listCard.Count()>0)
+    {
+
+    }
+
+    else
+    {
+        <div>No items added</div>
+    }
+
+</form>
+
+
+
